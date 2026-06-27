@@ -1,0 +1,59 @@
+# ==========================
+# LLM
+# ==========================
+
+groq
+
+# ==========================
+# AI Framework
+# ==========================
+
+langgraph
+
+# ==========================
+# Backend
+# ==========================
+
+fastapi
+uvicorn
+websockets
+python-multipart
+
+# ==========================
+# Configuration
+# ==========================
+
+pydantic
+pydantic-settings
+python-dotenv
+
+# ==========================
+# Resume Parsing
+# ==========================
+
+pdfplumber
+python-docx
+
+# ==========================
+# Database
+# ==========================
+
+sqlalchemy
+aiosqlite
+
+# ==========================
+# Voice
+# ==========================
+
+deepgram-sdk
+edge-tts
+
+# ==========================
+# Utilities
+# ==========================
+
+httpx
+aiofiles
+loguru
+orjson
+slowapi
