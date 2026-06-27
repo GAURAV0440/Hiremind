@@ -67,6 +67,9 @@ class InterviewState(TypedDict):
     question_number: int
     followup_count: int
 
+    # NEW
+    consecutive_low_scores: int
+
     # ==========================
     # Evaluation
     # ==========================

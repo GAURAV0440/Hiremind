@@ -16,14 +16,25 @@ def report_agent(state: InterviewState) -> InterviewState:
     )
 
     candidate_info = {
+        # Candidate Details
+        "candidate_level": state["candidate_level"],
         "candidate_category": state["candidate_category"],
         "interview_difficulty": state["interview_difficulty"],
+
+        # Overall Scores
         "resume_match_score": state["resume_match_score"],
         "interview_confidence": state["interview_confidence"],
         "average_score": average_score,
+
+        # Interview Summary
         "questions_asked": state["question_number"],
         "topics_covered": state["covered_topics"],
         "missing_skills": state["missing_skills"],
+
+        # COMPLETE INTERVIEW HISTORY
+        "interview_history": state["interview_history"],
+
+        # Overall Feedback
         "strengths": state["strengths"],
         "weaknesses": state["weaknesses"]
     }

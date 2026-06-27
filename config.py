@@ -75,10 +75,6 @@ class Settings(BaseSettings):
     # Voice
     # ==========================
 
-    DEEPGRAM_API_KEY: str = ""
-
-    VOICE_NAME: str
-
     MAX_AUDIO_DURATION_SECONDS: int
 
     # ==========================

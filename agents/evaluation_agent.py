@@ -6,6 +6,22 @@ from prompts import EVALUATION_PROMPT
 from state.interview_state import InterviewState
 from utils.scoring import calculate_confidence
 
+
+LOW_CONFIDENCE_PHRASES = [
+    "i don't know",
+    "i dont know",
+    "don't know",
+    "dont know",
+    "no idea",
+    "not sure",
+    "never used",
+    "haven't worked",
+    "have not worked",
+    "can't answer",
+    "cannot answer"
+]
+
+
 def evaluation_agent(state: InterviewState) -> InterviewState:
     """
     Evaluate candidate answer for the current topic.
@@ -53,6 +69,30 @@ def evaluation_agent(state: InterviewState) -> InterviewState:
             True
         )
 
+        # ==========================
+        # Detect very weak answers
+        # ==========================
+
+        answer = state["previous_answer"].strip().lower()
+
+        is_low_answer = (
+            score < 3
+            or any(
+                phrase in answer
+                for phrase in LOW_CONFIDENCE_PHRASES
+            )
+            or len(answer.split()) < 5
+        )
+
+        if is_low_answer:
+            state["consecutive_low_scores"] += 1
+        else:
+            state["consecutive_low_scores"] = 0
+
+        # ==========================
+        # Update state
+        # ==========================
+
         state["score"] = score
 
         state["total_score"] += score
@@ -63,7 +103,6 @@ def evaluation_agent(state: InterviewState) -> InterviewState:
 
         state["topic_score"] = score
 
-        # Update interview confidence
         average_score = (
             state["total_score"]
             / max(state["question_number"], 1)
@@ -75,7 +114,6 @@ def evaluation_agent(state: InterviewState) -> InterviewState:
             average_score=average_score
         )
 
-        # Let Python strategy decide interview flow
         if topic_completed:
             state["next_action"] = "next_question"
         else:

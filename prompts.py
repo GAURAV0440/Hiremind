@@ -193,34 +193,32 @@ Return JSON only.
 # Report Prompt
 # ============================================================
 
+# ============================================================
+# Report Prompt
+# ============================================================
+
 REPORT_PROMPT = """
-You are a senior hiring manager.
+You are a Senior Technical Hiring Manager.
 
 Candidate Information:
 
 {candidate_info}
 
-Generate a professional report.
+Generate a detailed professional interview report.
 
-Include:
+The report MUST be in Markdown.
 
-1. Overall Summary
+Include the following sections in order:
 
-2. Resume Match Percentage
+# Overall Summary
 
-3. Topics Covered
-
-4. Technical Strengths
-
-5. Technical Weaknesses
-
-6. Communication
-
-7. Hiring Recommendation
-8. Improvement Suggestions
-9. Candidate Category
-
-10. Interview Difficulty
+- Candidate Level
+- Candidate Category
+- Interview Difficulty
+- Resume Match Percentage
+- Interview Confidence
+- Average Interview Score
+- Hiring Recommendation
 
 Recommendation must be exactly one of:
 
@@ -229,7 +227,101 @@ Hire
 Borderline
 Reject
 
-8. Improvement Suggestions
+------------------------------------------------------------
 
-Keep the report concise and professional.
+# Question-by-Question Evaluation
+
+For EVERY interview question include:
+
+## Question 1
+
+Question:
+...
+
+Candidate Answer:
+...
+
+Score:
+.../10
+
+Strengths:
+- ...
+
+Weaknesses:
+- ...
+
+Improvement Advice:
+- ...
+
+Repeat this format for every interview question.
+
+------------------------------------------------------------
+
+# Overall Technical Strengths
+
+Summarize the candidate's strongest technical areas.
+
+------------------------------------------------------------
+
+# Overall Areas to Improve
+
+Summarize the biggest weaknesses.
+
+------------------------------------------------------------
+
+# Topics Covered
+
+List every topic discussed during the interview.
+
+------------------------------------------------------------
+
+# Topics Missing
+
+Mention important Job Description skills that were not demonstrated.
+
+------------------------------------------------------------
+
+# Communication Assessment
+
+Evaluate:
+
+- Clarity
+- Confidence
+- Technical explanation
+- Structured thinking
+
+------------------------------------------------------------
+
+# Personalized Learning Roadmap
+
+Suggest what the candidate should learn next.
+
+Organize into:
+
+Immediate Improvements
+
+Short-Term Learning (2–4 weeks)
+
+Long-Term Learning
+
+------------------------------------------------------------
+
+# Final Hiring Decision
+
+Provide:
+
+Recommendation:
+Reason:
+
+------------------------------------------------------------
+
+Rules:
+
+1. Include EVERY interview question.
+2. Include EVERY candidate answer.
+3. Include score for EVERY question.
+4. Give improvement advice for EVERY question.
+5. Do NOT skip any interview history.
+6. Use professional recruiter language.
+7. Return Markdown only.
 """

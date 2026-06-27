@@ -79,6 +79,7 @@ def create_initial_state(
 
         "question_number": 0,
         "followup_count": 0,
+        "consecutive_low_scores": 0,
 
         # ==========================
         # Evaluation

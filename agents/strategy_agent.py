@@ -3,6 +3,7 @@ from state.interview_state import InterviewState
 
 
 CONFIDENCE_THRESHOLD = 85.0
+LOW_SCORE_LIMIT = 3
 
 
 def _complete_current_topic(state: InterviewState):
@@ -31,6 +32,19 @@ def strategy_agent(state: InterviewState) -> InterviewState:
     Decide the next interview action.
     Pure Python logic.
     """
+
+    # ==========================================
+    # End interview after repeated weak answers
+    # ==========================================
+
+    if state["consecutive_low_scores"] >= LOW_SCORE_LIMIT:
+
+        _complete_current_topic(state)
+
+        state["next_action"] = "end_interview"
+        state["interview_finished"] = True
+
+        return state
 
     # ==========================================
     # End interview

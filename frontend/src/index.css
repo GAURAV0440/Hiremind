@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "SF Pro Text", "SF Pro Display", ui-sans-serif, system-ui, sans-serif;
+  --color-ink-50: #f6f8fb;
+  --color-ink-100: #eef2f7;
+  --color-ink-200: #dde4ee;
+  --color-ink-300: #c0ccda;
+  --color-ink-400: #8d9ab0;
+  --color-ink-500: #647185;
+  --color-ink-600: #465265;
+  --color-ink-700: #313c4d;
+  --color-ink-800: #202938;
+  --color-ink-900: #111827;
+  --color-ink-950: #090d16;
+  --animate-shimmer: shimmer 1.8s linear infinite;
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+  }
+}
+
+:root {
+  font-family: var(--font-sans);
+  color: #111827;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 2%, rgb(255 255 255 / 0.96), transparent 28rem),
+    radial-gradient(circle at 90% 18%, rgb(174 201 255 / 0.24), transparent 24rem),
+    radial-gradient(circle at 50% 115%, rgb(32 92 147 / 0.08), transparent 22rem),
+    #f5f7fb;
+  color: #111827;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.dark body {
+  color: #f4f7fb;
+  background:
+    radial-gradient(circle at 12% 0%, rgb(44 64 106 / 0.45), transparent 28rem),
+    radial-gradient(circle at 88% 15%, rgb(19 32 59 / 0.5), transparent 25rem),
+    radial-gradient(circle at 50% 115%, rgb(16 185 129 / 0.08), transparent 22rem),
+    #090d16;
+}
+
+::selection { background: #111827; color: #f8fafc; }
+.dark ::selection { background: #f8fafc; color: #111827; }
+
+button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
+button, a { outline-offset: 3px; }
+
+.glass {
+  background: rgb(255 255 255 / 0.72);
+  border: 1px solid rgb(15 23 42 / 0.08);
+  box-shadow: 0 16px 50px rgb(15 23 42 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(20px);
+}
+
+.dark .glass {
+  background: rgb(10 15 28 / 0.7);
+  border-color: rgb(255 255 255 / 0.1);
+  box-shadow: 0 18px 55px rgb(0 0 0 / 0.34), inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+
+.text-balance { text-wrap: balance; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
